@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.binitshah.medfieldtv.intro_3"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/onlinevidimage"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="25dp"
+        android:src="@drawable/cam" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/onlinevidtitle"
+        android:text="@string/onlinevidtitle"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="@color/greyText"
+        android:paddingTop="15dp"
+        android:paddingLeft="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onlinevideo"
+        android:id="@+id/onlineviddescrip"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:paddingLeft="40dp"
+        android:textSize="22sp"
+        android:paddingRight="40dp"
+        android:textIsSelectable="false"
+        android:textColor="@color/greyText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sports"
+        android:id="@+id/sportstext"
+        android:textSize="22sp"
+        android:textColor="@color/greyText"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lshows"
+        android:id="@+id/localshowstext"
+        android:textSize="22sp"
+        android:textColor="@color/greyText"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Townmeetings"
+        android:id="@+id/townmeetingstext"
+        android:textSize="22sp"
+        android:textColor="@color/greyText"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more"
+        android:id="@+id/andmoretext"
+        android:textSize="22sp"
+        android:textColor="@color/greyText"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

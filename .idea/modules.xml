@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Medfield.TV.iml" filepath="$PROJECT_DIR$/Medfield.TV.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/viewPageIndicatorLibrary/viewPageIndicatorLibrary.iml" filepath="$PROJECT_DIR$/viewPageIndicatorLibrary/viewPageIndicatorLibrary.iml" />
+    </modules>
+  </component>
+</project>

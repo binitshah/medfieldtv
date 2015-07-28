@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.binitshah.medfieldtv.Intro_1"
+    android:background="@color/white">
+
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/descrip"
+        android:text="@string/description"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="18sp"
+        android:textIsSelectable="false"
+        android:textColor="@color/greyText" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentlogo"
+        android:layout_gravity="center_horizontal|top"
+        android:src="@drawable/clogo"
+        android:paddingTop="15dp" />
+
+</FrameLayout>

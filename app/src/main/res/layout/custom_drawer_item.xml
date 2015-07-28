@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/drawericon"
+        android:src="@drawable/cam"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Hello"
+        android:id="@+id/drawertext"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingTop="0dp"
+        android:textColor="@color/greyText"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/drawericon"
+        android:layout_toEndOf="@+id/drawericon" />
+
+</RelativeLayout>
