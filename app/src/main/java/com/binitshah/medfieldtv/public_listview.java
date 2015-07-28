@@ -161,7 +161,7 @@ public class public_listview extends Fragment {
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
                     hidePDialog();
-                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error. My apologies.", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error. My apologies." + "Error: " + error.getMessage(), Toast.LENGTH_LONG);
                     toast.show();
                 }
             });
