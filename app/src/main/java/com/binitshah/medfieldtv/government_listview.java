@@ -35,7 +35,7 @@ public class government_listview extends Fragment {
 
     private static final String TAG = public_listview.class.getSimpleName();
 
-    private static final String url = "http://binitshah.com/government_list.json";
+    private static final String url = "http://binitshah.com/a/government_list.json";
     private ProgressDialog pDialog;
     private List<Show> showList = new ArrayList<Show>();
     private ListView listView;
@@ -83,7 +83,7 @@ public class government_listview extends Fragment {
                                     Show show = new Show();
                                     show.setTitle(obj.getString("title"));
                                     show.setThumbnailUrl(obj.getString("image"));
-                                    show.setDuration(obj.getString("duration"));
+                                    show.setStartandEndTime(obj.getString("starttime"), obj.getString("endtime"));
                                     show.setDescription(obj.getString("description"));
 
                                     // Genre is json array

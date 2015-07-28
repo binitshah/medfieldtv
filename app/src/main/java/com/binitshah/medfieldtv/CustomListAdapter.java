@@ -65,7 +65,7 @@ public class CustomListAdapter extends BaseAdapter {
         // title
         title.setText(s.getTitle());
 
-        // rating
+        // times
         timing.setText(s.getTimes());
 
         // descriptions

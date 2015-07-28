@@ -32,10 +32,11 @@ import java.util.List;
  */
 public class public_listview extends Fragment {
 
+    //the tag for all error logs
     private static final String TAG = public_listview.class.getSimpleName();
 
-    private static final String url = "http://binitshah.com/public_list.json";
-    private static final String urlold = "http://binitshah.com/public_list_old.json";
+    //url of the current jsonstring
+    private static final String url = "http://binitshah.com/a/public_list.json";
     private ProgressDialog pDialog;
     private List<Show> showList = new ArrayList<Show>();
     private ListView listView;
@@ -68,55 +69,6 @@ public class public_listview extends Fragment {
             pDialog.show();
 
             // Creating volley request obj
-            JsonArrayRequest showReq = new JsonArrayRequest(urlold,
-                    new Response.Listener<JSONArray>() {
-                        @Override
-                        public void onResponse(JSONArray response) {
-                            Log.d(TAG, response.toString());
-                            hidePDialog();
-
-                            // Parsing json
-                            for (int i = 0; i < response.length(); i++) {
-                                try {
-
-                                    JSONObject obj = response.getJSONObject(i);
-                                    Show show = new Show();
-                                    show.setTitle(obj.getString("title"));
-                                    show.setThumbnailUrl(obj.getString("image"));
-                                    show.setDuration(obj.getString("duration"));
-                                    show.setDescription(obj.getString("description"));
-
-                                    // Genre is json array
-                                    JSONArray genreArry = obj.getJSONArray("genre");
-                                    ArrayList<String> genre = new ArrayList<String>();
-                                    for (int j = 0; j < genreArry.length(); j++) {
-                                        genre.add((String) genreArry.get(j));
-                                    }
-                                    show.setGenre(genre);
-
-                                    // adding program to shows array
-                                    showList.add(show);
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-
-                            // notifying list adapter about data changes
-                            // so that it renders the list view with updated date
-                            adapter.notifyDataSetChanged();
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    VolleyLog.d(TAG, "Error: " + error.getMessage());
-                    hidePDialog();
-                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error. My apologies.", Toast.LENGTH_LONG);
-                    toast.show();
-                }
-            });
-
             JsonArrayRequest showReqnew = new JsonArrayRequest(url,
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -132,7 +84,7 @@ public class public_listview extends Fragment {
                                     Show show = new Show();
                                     show.setTitle(obj.getString("title"));
                                     show.setThumbnailUrl(obj.getString("image"));
-                                    show.setDuration(obj.getString("duration"));
+                                    show.setStartandEndTime(obj.getString("starttime"), obj.getString("endtime"));
                                     show.setDescription(obj.getString("description"));
 
                                     // Genre is json array
@@ -161,37 +113,14 @@ public class public_listview extends Fragment {
                 public void onErrorResponse(VolleyError error) {
                     VolleyLog.d(TAG, "Error: " + error.getMessage());
                     hidePDialog();
-                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error. My apologies." + "Error: " + error.getMessage(), Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity().getApplicationContext(), "There was an error. My apologies.", Toast.LENGTH_LONG);
                     toast.show();
                 }
             });
 
             // Adding request to request queue
-            listView.setSelection(2);
             AppController.getInstance().addToRequestQueue(showReqnew);
         }
-
-        /*for(int i = 0; i < showList.size(); i++){
-            Show temps = showList.get(i);
-            String time = temps.getTimes();
-            String[] tokens = time.split(" ");
-            SimpleDateFormat parser = new SimpleDateFormat("hh:mm a");
-            try{
-                Date startTime = parser.parse(tokens[0]);
-                Date endTime = parser.parse(tokens[2]);
-                Date now = new Date();
-                String noww = parser.format(now);
-                Date realnow = parser.parse(noww);
-
-                if(realnow.after(startTime) && realnow.before(endTime)){
-                    listView.setSelection(i);
-                }
-            }
-            catch(ParseException e){
-                Toast toast = Toast.makeText(getActivity().getApplicationContext(), "Error" + e, Toast.LENGTH_LONG);
-                toast.show();
-            }
-        }*/
 
         return v;
     }
