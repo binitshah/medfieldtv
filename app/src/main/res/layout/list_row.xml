@@ -55,14 +55,4 @@
         android:ellipsize="end"
         android:maxLines="3"/>
 
-    <ImageView
-        android:id="@+id/currentshow"
-        android:src="@drawable/currentshow"
-        android:layout_width="15dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentRight="true"/>
-
 </RelativeLayout>

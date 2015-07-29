@@ -2,11 +2,11 @@ package com.binitshah.medfieldtv;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -56,7 +56,6 @@ public class CustomListAdapter extends BaseAdapter {
         TextView title = (TextView) convertView.findViewById(R.id.title);
         TextView timing = (TextView) convertView.findViewById(R.id.timeduration);
         TextView descriptionofshow = (TextView) convertView.findViewById(R.id.descriptionofshows);
-        ImageView currentshowimage = (ImageView) convertView.findViewById(R.id.currentshow);
 
         // getting movie data for the row
         Show s = showItems.get(position);
@@ -73,8 +72,11 @@ public class CustomListAdapter extends BaseAdapter {
         // descriptions
         descriptionofshow.setText(s.getDescription());
 
-        if(!s.isCurrentShow()){
-            currentshowimage.setVisibility(ImageView.GONE);
+        if(s.isCurrentShow()){
+            convertView.setBackgroundColor(Color.parseColor("#f1c40f"));
+        }
+        else{
+            convertView.setBackgroundColor(0x00000000);
         }
 
         return convertView;

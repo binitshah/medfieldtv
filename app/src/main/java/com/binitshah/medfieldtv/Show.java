@@ -84,10 +84,10 @@ public class Show {
 
         try {
             if (currentTime.after(stime) && currentTime.before(etime)) {
-                Log.v(TAG, "true - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
+                //Log.w(TAG, "true - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
                 return true;
             } else {
-                Log.v(TAG, "true - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
+                //Log.w(TAG, "false - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
                 return false;
             }
         }

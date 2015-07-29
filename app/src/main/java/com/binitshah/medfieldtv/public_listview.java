@@ -24,7 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -46,6 +48,7 @@ public class public_listview extends Fragment {
     String provider;
     boolean downfirst = false;
     int current = 1;
+    int howManyTimesRun = 0;
 
     public public_listview() {
         // Required empty public constructor
@@ -65,7 +68,7 @@ public class public_listview extends Fragment {
         setChannelNum();
 
         if(showList.size() < 9) {
-            callJson("http://binitshah.com/a/public_list.json", true);
+            callJson(urlChanger(), true);
         }
 
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -81,7 +84,7 @@ public class public_listview extends Fragment {
                 }
 
                 if(firstVisibleItem == 0 && downfirst){
-                    callJson("http://binitshah.com/a/education_list.json", false);
+                    callJson(urlChanger(), false);
                     downfirst = false;
                 }
             }
@@ -199,6 +202,16 @@ public class public_listview extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         hidePDialog();
+    }
+
+    public String urlChanger(){
+        Calendar c = Calendar.getInstance();
+        c.add(Calendar.DATE, -1 * howManyTimesRun);
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String url = "http://binitshah.com/a/" + format.format(c.getTime()) + ".json";
+        howManyTimesRun++;
+        Log.e(TAG, url);
+        return url;
     }
 
     public void setChannelNum(){
