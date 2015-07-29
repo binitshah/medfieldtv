@@ -1,8 +1,11 @@
 package com.binitshah.medfieldtv;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +29,7 @@ public class DashboardActivity extends ActionBarActivity
     private CharSequence mTitle;
     SharedPreferences sharedPref;
     String provider;
+    android.support.v7.app.ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,8 @@ public class DashboardActivity extends ActionBarActivity
             startActivity(intent);
         }
 
+        changeActionBarColor();
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         onSectionAttached(1);
@@ -50,6 +56,12 @@ public class DashboardActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+    }
+
+    @TargetApi(11)
+    public void changeActionBarColor(){
+        actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#34495e")));
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class public_listview extends Fragment {
     boolean downfirst = false;
     int current = 1;
     int howManyTimesRun = 0;
+    Parcelable state;
 
     public public_listview() {
         // Required empty public constructor
@@ -97,18 +99,27 @@ public class public_listview extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent detailIntent = new Intent(getActivity(), ShowDetailActivity.class);
                 Show sh = showList.get(position);
-                detailIntent.putExtra("thumbnailurl",sh. getThumbnailUrl());
+                detailIntent.putExtra("thumbnailurl", sh.getThumbnailUrl());
                 detailIntent.putExtra("title", sh.getTitle());
                 detailIntent.putExtra("times", sh.getFullTimes());
-                detailIntent.putExtra("descriptions",sh.getDescription());
+                detailIntent.putExtra("descriptions", sh.getDescription());
                 detailIntent.putExtra("genres", sh.getGenre());
                 startActivity(detailIntent);
             }
         });
 
+        if(state != null){
+            listView.onRestoreInstanceState(state);
+        }
+
         return v;
     }
 
+    @Override
+    public void onPause(){
+        state = listView.onSaveInstanceState();
+        super.onPause();
+    }
 
     public void callJson(String url, final Boolean firstTime){
         if(firstTime) {

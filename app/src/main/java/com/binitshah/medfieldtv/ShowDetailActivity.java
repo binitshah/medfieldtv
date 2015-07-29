@@ -3,12 +3,13 @@ package com.binitshah.medfieldtv;
 import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -34,16 +35,15 @@ public class ShowDetailActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_detail);
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null){
+            if (extras == null) {
                 titleHolder = null;
                 descriptionHolder = null;
                 timesHolder = null;
                 thumbnailUrlHolder = null;
                 genresHolder = null;
-            }
-            else{
+            } else {
                 titleHolder = extras.getString("title");
                 thumbnailUrlHolder = extras.getString("thumbnailurl");
                 timesHolder = extras.getString("times");
@@ -68,44 +68,68 @@ public class ShowDetailActivity extends ActionBarActivity {
         color = randomColor();
         FrameLayout layout = (FrameLayout) findViewById(R.id.backgroundofimage);
         layout.setBackgroundColor(Color.parseColor(color));
-        TextView genre1 = (TextView) findViewById(R.id.genre1);
-        TextView genre2 = (TextView) findViewById(R.id.genre2);
-        TextView genre3 = (TextView) findViewById(R.id.genre3);
-        ImageView tag3 = (ImageView) findViewById(R.id.tag3);
 
-        changeColor();
+        float[] radii = new float[8];
+        for(int i = 0; i < 8; i++) {
+            radii[i] = 10;
+        }
+
+        if (genresHolder.size() > 0){
+            TextView genre1 = (TextView) findViewById(R.id.tag1);
+            genre1.setText(genresHolder.get(0));
+            ShapeDrawable tagBackground1 = new ShapeDrawable();
+            tagBackground1.setShape(new RoundRectShape(radii,null,null));
+            String tempColorHolder = genreColor(genresHolder.get(0));
+            tagBackground1.getPaint().setColor(Color.parseColor(tempColorHolder));
+            tagBackground1.setPadding(5, 5, 5, 5);
+            genre1.setBackgroundDrawable(tagBackground1);
+        }
+        else{
+            TextView genre1 = (TextView) findViewById(R.id.tag1);
+            genre1.setVisibility(TextView.GONE);
+        }
+
+        if(genresHolder.size() > 1) {
+            TextView genre2 = (TextView) findViewById(R.id.tag2);
+            genre2.setText(genresHolder.get(1));
+            ShapeDrawable tagBackground2 = new ShapeDrawable();
+            tagBackground2.setShape(new RoundRectShape(radii, null, null));
+            String tempColorHolder = genreColor(genresHolder.get(1));
+            tagBackground2.getPaint().setColor(Color.parseColor(tempColorHolder));
+            tagBackground2.setPadding(5, 5, 5, 5);
+            genre2.setBackgroundDrawable(tagBackground2);
+        }
+        else{
+            TextView genre2 = (TextView) findViewById(R.id.tag2);
+            genre2.setVisibility(TextView.GONE);
+        }
+
+        if(genresHolder.size() > 2) {
+            TextView genre3 = (TextView) findViewById(R.id.tag3);
+            genre3.setText(genresHolder.get(2));
+            ShapeDrawable tagBackground3 = new ShapeDrawable();
+            tagBackground3.setShape(new RoundRectShape(radii,null,null));
+            String tempColorHolder = genreColor(genresHolder.get(2));
+            tagBackground3.getPaint().setColor(Color.parseColor(tempColorHolder));
+            tagBackground3.setPadding(5, 5, 5, 5);
+            genre3.setBackgroundDrawable(tagBackground3);
+        }
+        else{
+            TextView genre3 = (TextView) findViewById(R.id.tag3);
+            genre3.setVisibility(TextView.GONE);
+        }
+
+        changeActionBarColor();
 
         thumbNail.setImageUrl(thumbnailUrlHolder, imageLoader);
         title.setText(titleHolder);
         setTitle(titleHolder);
         timing.setText(timesHolder);
         descriptionofshow.setText(descriptionHolder);
-
-        if(genresHolder.get(0) != null){
-            genre1.setText(genresHolder.get(0));
-        }
-        else{
-            genre1.setVisibility(TextView.GONE);
-        }
-
-        if(genresHolder.get(1) != null){
-            genre2.setText(genresHolder.get(1));
-        }
-        else{
-            genre2.setVisibility(TextView.GONE);
-        }
-
-        if(genresHolder.get(genresHolder.size()) != null){
-            genre3.setText(genresHolder.get(genresHolder.size()));
-        }
-        else{
-            genre3.setVisibility(TextView.GONE);
-            tag3.setVisibility(ImageView.GONE);
-        }
     }
 
     @TargetApi(11)
-    public void changeColor(){
+    public void changeActionBarColor(){
         actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
     }
@@ -169,7 +193,67 @@ public class ShowDetailActivity extends ActionBarActivity {
             return "#bdc3c7";
         }
         else{
+            return "#000000";
+        }
+    }
+
+    public String genreColor(String genre){
+        if(genre.equals("Crime")){
+            return "#1abc9c";
+        }
+        else if(genre.equals("Drama")){
+            return "#16a085";
+        }
+        else if(genre.equals("Action")){
+            return "#2ecc71";
+        }
+        else if(genre.equals("Crime")){
+            return "#27ae60";
+        }
+        else if(genre.equals("Biography")){
+            return "#3498db";
+        }
+        else if(genre.equals("History")){
+            return "#2980b9";
+        }
+        else if(genre.equals("Western")){
+            return "#9b59b6";
+        }
+        else if(genre.equals("Adventure")){
+            return "#8e44ad";
+        }
+        else if(genre.equals("Fantasy")){
+            return "#34495e";
+        }
+        else if(genre.equals("Romance")){
+            return "#2c3e50";
+        }
+        else if(genre.equals("Mystery")){
+            return "#f1c40f";
+        }
+        else if(genre.equals("Sci-Fi")){
+            return "#f39c12";
+        }
+        else if(genre.equals("War")){
+            return "#d35400";
+        }
+        else if(genre.equals("Animation")){
+            return "#e67e22";
+        }
+        else if(genre.equals("Thiller")){
+            return "#e74c3c";
+        }
+        else if(genre.equals("Family")){
+            return "#c0392b";
+        }
+        else if(genre.equals("Comedy")){
+            return "#7f8c8d";
+        }
+        else if(genre.equals("Film-Noir")){
             return "#bdc3c7";
+        }
+        else{
+            return "#000000";
         }
     }
 
