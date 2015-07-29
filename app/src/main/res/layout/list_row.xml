@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/currentshow"
         android:textSize="@dimen/title"
         android:fontFamily="sans-serif-condensed"
         android:textStyle="bold" />
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/currentshow"
         android:textSize="@dimen/rating"
         android:fontFamily="sans-serif-condensed"
         android:textStyle="normal"/>
@@ -45,11 +47,22 @@
         android:layout_below="@id/timeduration"
         android:layout_marginTop="2dp"
         android:layout_toRightOf="@+id/thumbnail"
+        android:layout_toLeftOf="@+id/currentshow"
         android:textColor="@color/genre"
         android:textSize="@dimen/genre"
         android:fontFamily="sans-serif-light"
         android:scrollHorizontally="true"
         android:ellipsize="end"
         android:maxLines="3"/>
+
+    <ImageView
+        android:id="@+id/currentshow"
+        android:src="@drawable/currentshow"
+        android:layout_width="15dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"/>
 
 </RelativeLayout>

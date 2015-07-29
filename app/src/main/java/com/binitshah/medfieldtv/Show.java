@@ -65,7 +65,7 @@ public class Show {
     }
 
     public void setStartandEndTime(String startTime, String endTime) {
-        DateFormat df = new SimpleDateFormat("MM dd kk:mm:ss", Locale.ENGLISH);
+        DateFormat df = new SimpleDateFormat("MM dd yyyy kk:mm:ss", Locale.ENGLISH);
         DateFormat simpleFormat = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
         try {
             stime = df.parse(startTime);
@@ -81,10 +81,18 @@ public class Show {
 
     public Boolean isCurrentShow(){
         Date currentTime = new Date();
-        if(currentTime.after(stime) && currentTime.before(etime)){
-            return true;
+
+        try {
+            if (currentTime.after(stime) && currentTime.before(etime)) {
+                Log.v(TAG, "true - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
+                return true;
+            } else {
+                Log.v(TAG, "true - " + title + " - Current: " + currentTime + "start: " + stime + "end: " + etime);
+                return false;
+            }
         }
-        else {
+        catch(NullPointerException e){
+            Log.e(TAG, "isCurrentShow has empty stime and etime");
             return false;
         }
     }
