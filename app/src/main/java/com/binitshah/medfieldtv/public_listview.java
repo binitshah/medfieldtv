@@ -3,6 +3,7 @@ package com.binitshah.medfieldtv;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,6 +89,20 @@ public class public_listview extends Fragment {
                     callJson(urlChanger(), false);
                     downfirst = false;
                 }
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent detailIntent = new Intent(getActivity(), ShowDetailActivity.class);
+                Show sh = showList.get(position);
+                detailIntent.putExtra("thumbnailurl",sh. getThumbnailUrl());
+                detailIntent.putExtra("title", sh.getTitle());
+                detailIntent.putExtra("times", sh.getFullTimes());
+                detailIntent.putExtra("descriptions",sh.getDescription());
+                detailIntent.putExtra("genres", sh.getGenre());
+                startActivity(detailIntent);
             }
         });
 

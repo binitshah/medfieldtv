@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_row_selector"
     android:padding="8dp">
 
     <!-- todo experiment with a non-box type of image-->
@@ -21,10 +20,11 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:layout_toLeftOf="@+id/currentshow"
         android:textSize="@dimen/title"
         android:fontFamily="sans-serif-condensed"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="1"/>
 
     <!-- duration -->
     <TextView
@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_toRightOf="@+id/thumbnail"
-        android:layout_toLeftOf="@+id/currentshow"
         android:textSize="@dimen/rating"
         android:fontFamily="sans-serif-condensed"
         android:textStyle="normal"/>
@@ -47,7 +46,6 @@
         android:layout_below="@id/timeduration"
         android:layout_marginTop="2dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:layout_toLeftOf="@+id/currentshow"
         android:textColor="@color/genre"
         android:textSize="@dimen/genre"
         android:fontFamily="sans-serif-light"

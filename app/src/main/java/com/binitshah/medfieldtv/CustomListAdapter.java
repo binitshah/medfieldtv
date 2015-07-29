@@ -15,6 +15,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.List;
 
 public class CustomListAdapter extends BaseAdapter {
+
     private Activity activity;
     private LayoutInflater inflater;
     private List<Show> showItems;
@@ -66,17 +67,25 @@ public class CustomListAdapter extends BaseAdapter {
         // title
         title.setText(s.getTitle());
 
+
         // times
         timing.setText(s.getTimes());
+
 
         // descriptions
         descriptionofshow.setText(s.getDescription());
 
         if(s.isCurrentShow()){
-            convertView.setBackgroundColor(Color.parseColor("#f1c40f"));
+            convertView.setBackgroundColor(Color.parseColor("#34495e"));
+            title.setTextColor(Color.parseColor("#FFFFFF"));
+            timing.setTextColor(Color.parseColor("#FFFFFF"));
+            descriptionofshow.setTextColor(Color.parseColor("#FFFFFF"));
         }
         else{
-            convertView.setBackgroundColor(0x00000000);
+            convertView.setBackgroundColor(Color.parseColor("#F5F5F5"));
+            title.setTextColor(Color.parseColor("#000000"));
+            timing.setTextColor(Color.parseColor("#000000"));
+            descriptionofshow.setTextColor(Color.parseColor("#666666"));
         }
 
         return convertView;

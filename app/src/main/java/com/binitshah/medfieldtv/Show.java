@@ -13,7 +13,7 @@ import java.util.Locale;
  * Created by Binit on 7/10/15.
  */
 public class Show {
-    private String title, thumbnailUrl, description, times;
+    private String title, thumbnailUrl, description, times, fulltimes;
     private Date stime, etime;
     private ArrayList<String> genre;
     private static final String TAG = Show.class.getSimpleName();
@@ -64,14 +64,27 @@ public class Show {
         }
     }
 
+    public String getFullTimes() {
+        if(times != null){
+            return fulltimes;
+        }
+        else{
+            return "Times not found";
+        }
+    }
+
     public void setStartandEndTime(String startTime, String endTime) {
         DateFormat df = new SimpleDateFormat("MM dd yyyy kk:mm:ss", Locale.ENGLISH);
-        DateFormat simpleFormat = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
+        DateFormat simpleFormat0 = new SimpleDateFormat("MMMM dd, hh:mm aa", Locale.ENGLISH);
+        DateFormat simpleFormat1 = new SimpleDateFormat("EEE hh:mm aa", Locale.ENGLISH);
+        DateFormat simpleFormat2 = new SimpleDateFormat("hh:mm aa", Locale.ENGLISH);
+
         try {
             stime = df.parse(startTime);
             etime = df.parse(endTime);
 
-            this.times = simpleFormat.format(stime) + " - " + simpleFormat.format(etime);
+            this.times = simpleFormat1.format(stime) + " - " + simpleFormat2.format(etime);
+            this.fulltimes = simpleFormat0.format(stime) + " - " + simpleFormat2.format(etime);
         }
         catch(ParseException e){
             this.times = "Error parsing time..";
