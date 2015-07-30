@@ -1,6 +1,7 @@
 package com.binitshah.medfieldtv;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,6 +24,10 @@ public class newsfeed extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        Intent trialDetail = new Intent(getActivity(), ShowDetailActivity.class);
+        startActivity(trialDetail);
+
         return inflater.inflate(R.layout.fragment_newsfeed, container, false);
     }
 

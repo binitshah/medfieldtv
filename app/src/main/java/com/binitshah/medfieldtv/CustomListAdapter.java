@@ -1,18 +1,18 @@
 package com.binitshah.medfieldtv;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.graphics.Color;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.BaseAdapter;
+        import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.NetworkImageView;
+        import com.android.volley.toolbox.ImageLoader;
+        import com.android.volley.toolbox.NetworkImageView;
 
-import java.util.List;
+        import java.util.List;
 
 public class CustomListAdapter extends BaseAdapter {
 

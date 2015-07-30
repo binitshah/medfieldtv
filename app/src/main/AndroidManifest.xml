@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.binitshah.medfieldtv.DashboardActivity" />
         </activity>
+        <activity
+            android:name=".YoutubeVideoActivity"
+            android:label="@string/title_activity_youtube_video"
+            android:parentActivityName=".DashboardActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.binitshah.medfieldtv.DashboardActivity" />
+        </activity>
     </application>
 
 </manifest>

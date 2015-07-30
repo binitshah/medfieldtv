@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -41,18 +40,16 @@ public class public_listview extends Fragment {
     //the tag for all error logs
     private static final String TAG = public_listview.class.getSimpleName();
 
-    //url of the current jsonstring
     private ProgressDialog pDialog;
     private List<Show> showList = new ArrayList<Show>();
     private ListView listView;
-    private TextView textView;
     private CustomListAdapter adapter;
+    private TextView textView;
     SharedPreferences sharedPref;
     String provider;
     boolean downfirst = false;
     int current = 1;
     int howManyTimesRun = 0;
-    Parcelable state;
 
     public public_listview() {
         // Required empty public constructor
@@ -82,12 +79,12 @@ public class public_listview extends Fragment {
             }
 
             @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
-                if(firstVisibleItem == 1){
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 1) {
                     downfirst = true;
                 }
 
-                if(firstVisibleItem == 0 && downfirst){
+                if (firstVisibleItem == 0 && downfirst) {
                     callJson(urlChanger(), false);
                     downfirst = false;
                 }
@@ -108,17 +105,7 @@ public class public_listview extends Fragment {
             }
         });
 
-        if(state != null){
-            listView.onRestoreInstanceState(state);
-        }
-
         return v;
-    }
-
-    @Override
-    public void onPause(){
-        state = listView.onSaveInstanceState();
-        super.onPause();
     }
 
     public void callJson(String url, final Boolean firstTime){

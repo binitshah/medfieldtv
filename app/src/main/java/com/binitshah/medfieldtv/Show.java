@@ -16,6 +16,9 @@ public class Show {
     private String title, thumbnailUrl, description, times, fulltimes;
     private Date stime, etime;
     private ArrayList<String> genre;
+    private String videoID, publishedAtTime, videoTitle, videoDescription, videoThumbnailURL;
+
+
     private static final String TAG = Show.class.getSimpleName();
 
     public Show() {
@@ -30,6 +33,34 @@ public class Show {
         this.etime = endtimes;
         this.genre = genre;
     }
+
+    public Show(String vidID,String name, String thumbnaillUrl, String descriptionn, String pubTime) {
+        this.videoID = vidID;
+        this.videoThumbnailURL = thumbnaillUrl;
+        this.videoDescription = descriptionn;
+        this.videoTitle = name;
+        this.publishedAtTime = pubTime;
+    }
+
+    public String getVideoTitle() { return videoTitle; }
+
+    public void setVideoTitle(String vidName) { this.videoTitle = vidName; }
+
+    public String getVideoDescription() { return videoDescription; }
+
+    public void setVideoDescription(String vidDescrip) { this.videoDescription = vidDescrip; }
+
+    public String getVideoID() { return videoID; }
+
+    public void setVideoID(String tempvidID) { this.videoID = tempvidID; }
+
+    public String getVideoThumbnailURL() { return videoThumbnailURL; }
+
+    public void setVideoThumbnailURL(String tempThumbnailURL) { this.videoThumbnailURL = tempThumbnailURL; }
+
+    public String getPublishedAtTime() { return publishedAtTime; }
+
+    public void setPublishedAtTime(String tempTime) { this.publishedAtTime = tempTime; }
 
     public String getTitle() {
         return title;

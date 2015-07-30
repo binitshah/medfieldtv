@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- todo experiment with a non-box type of image-->
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/vidthumbnail"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+
+
+    <!-- Movie Title -->
+    <TextView
+        android:id="@+id/vidtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/vidthumbnail"
+        android:layout_toRightOf="@+id/vidthumbnail"
+        android:textSize="@dimen/title"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:maxLines="1"/>
+
+    <!-- duration -->
+    <TextView
+        android:id="@+id/vidpublished"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vidtitle"
+        android:layout_toRightOf="@+id/vidthumbnail"
+        android:textSize="@dimen/rating"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="normal"/>
+
+    <!-- description -->
+    <TextView
+        android:id="@+id/viddescriptionofshows"
+        android:layout_width="fill_parent"
+        android:paddingRight="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vidpublished"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/vidthumbnail"
+        android:textColor="@color/genre"
+        android:textSize="@dimen/genre"
+        android:fontFamily="sans-serif-light"
+        android:scrollHorizontally="true"
+        android:ellipsize="end"
+        android:maxLines="3"/>
+
+</RelativeLayout>
